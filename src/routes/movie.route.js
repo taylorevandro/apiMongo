@@ -1,5 +1,6 @@
 import express from "express";
 import pool from "../database/connection.js";
+import { auth } from "../middlewares/auth.middleware.js";
 
 import{
     movieAll, searchMovie, addMovie, modifyMovie, removeMovie
@@ -7,10 +8,10 @@ import{
 
 const router = express.Router();
 
-router.get("/filmes", movieAll);
-router.get("/filmes/:id", searchMovie);
-router.put("/filmes/:id", modifyMovie);
-router.post("/filmes", addMovie);
-router.delete("/filmes/:id", removeMovie);
+router.get("/filmes", auth, movieAll);
+router.get("/filmes/:id", auth, searchMovie);
+router.put("/filmes/:id", auth, modifyMovie);
+router.post("/filmes", auth, addMovie);
+router.delete("/filmes/:id", auth, removeMovie);
 
 export default router;
