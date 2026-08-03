@@ -1,4 +1,5 @@
 import express from "express";
+import pool from "../database/connection.js";
 
 import{
     movieAll, searchMovie, addMovie, modifyMovie, removeMovie

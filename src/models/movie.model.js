@@ -1,3 +1,4 @@
+import { json } from "express";
 import pool from "../database/connection.js";
 
 export async function getMovies() {
