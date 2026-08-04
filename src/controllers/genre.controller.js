@@ -1,8 +1,9 @@
+import { buildPagination } from '../services/pagination.service.js';
 import * as GenreModels from '../models/genre.model.js';
 
 export async function genreAll(req, res) {
     try {
-        const result = await paginate(req,
+        const result = await buildPagination(req,
             (limit, offset) => GenreModels.getGenreAll({ limit, offset }),
             () => GenreModels.countGenre()
         );

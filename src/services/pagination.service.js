@@ -1,4 +1,4 @@
-export async function paginate(req, getData, getTotal) {
+export async function buildPagination(req, getData, getTotal) {
 
     const { page, limit, offset } = req.pagination;
 
