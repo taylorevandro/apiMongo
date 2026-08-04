@@ -37,3 +37,15 @@ export async function updateGenre(id, dados) {
 
     return result.rows[0];
 }
+
+export async function countGenre() {
+
+    const result = await pool.query(
+        `
+        SELECT COUNT(*) 
+        FROM genero
+        `
+    );
+
+    return Number(result.rows[0].count);
+}

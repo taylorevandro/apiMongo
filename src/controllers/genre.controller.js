@@ -3,11 +3,16 @@ import * as GenreModels from '../models/genre.model.js';
 export async function genreAll(req, res) {
     try {
         const { limit, offset, page } = req.pagination
-        const Genre = await GenreModels.getGenreAll({limit,offset});
+        const [Genre, Total] = await Promise.all([
+            GenreModels.getGenreAll({ limit, offset }),
+            GenreModels.countGenre()
+        ]);
 
         res.status(200).json({
             page,
             limit,
+            Total,
+            totalPages: Math.ceil(Total / limit),
             data: Genre
         });
     } catch (error) {
