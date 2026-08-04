@@ -8,7 +8,7 @@ export async function getGenreAll({limit, offset, description}) {
     if (description) {
         params.push(`%${description}%`);
 
-        sql += ` WHERE descricao LIKE $${params.length}`;
+        sql += ` WHERE UPPPER(descricao) LIKE $${params.length}`;
 
     }
 
@@ -61,7 +61,7 @@ export async function countGenre(description) {
     if (description) {
         params.push(`%${description}%`);
 
-        sql += ` WHERE descricao LIKE $${params.length}`;
+        sql += ` WHERE UPPPER(descricao) LIKE $${params.length}`;
     }
 
     const result = await pool.query(sql, params);

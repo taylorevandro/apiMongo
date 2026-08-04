@@ -3,7 +3,7 @@ import * as GenreModels from '../models/genre.model.js';
 
 export async function genreAll(req, res) {
     try {
-        const description = req.query.descricao;
+        const description = req.query.descricao.toUpperCase();
 
         const result = await buildPagination(req,
             (limit, offset) => GenreModels.getGenreAll({ limit, offset, description: req.query.descricao}),
