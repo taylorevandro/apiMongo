@@ -4,7 +4,7 @@ import pool from "../database/connection.js";
 
 export async function getGenreAll({limit, offset}) {
 
-    const result = await pool.query(" SELECT * FROM genero ORDER BY id LIMIT $1 OFFSET $2", [limite, offset]);
+    const result = await pool.query(" SELECT * FROM genero ORDER BY id LIMIT $1 OFFSET $2", [limit, offset]);
 
     return result.rows;
 }
