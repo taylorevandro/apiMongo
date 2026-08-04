@@ -55,7 +55,7 @@ export async function updateGenre(id, dados) {
 }
 
 export async function countGenre(description) {
-    let sql = ` SELECT * FROM genero `;
+    let sql = ` SELECT COUNT(*) AS count FROM genero `;
     const params = [];
 
     if (description) {
