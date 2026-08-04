@@ -1,7 +1,5 @@
 import dotenv from "dotenv";
 import app from "./src/app.js";
-import swaggerUi from "swagger-ui-express";
-import { swaggerSpec } from "./src/config/swagger.js";
 
 const PORT = process.env.PORT;
 

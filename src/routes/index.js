@@ -2,6 +2,8 @@ import express from "express";
 import movies from "./movie.route.js";
 import genres from "./genre.router.js";
 import users from "./user.route.js";
+import swaggerUi from "swagger-ui-express";
+import { swaggerSpec } from "../document/swagger.js";
 
 const routes = (app) => {
     app.route("/")
