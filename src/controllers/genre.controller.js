@@ -6,7 +6,7 @@ export async function genreAll(req, res) {
         const description = req.query.descricao;
 
         const result = await buildPagination(req,
-            (limit, offset) => GenreModels.getGenreAll({ limit, offset, description: req.query.descricao }),
+            (limit, offset) => GenreModels.getGenreAll({ limit, offset, description: req.query.descricao}),
             () => GenreModels.countGenre(description)
         );
 
