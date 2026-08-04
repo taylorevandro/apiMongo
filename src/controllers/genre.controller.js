@@ -3,9 +3,11 @@ import * as GenreModels from '../models/genre.model.js';
 
 export async function genreAll(req, res) {
     try {
+        const description = req.query.descricao;
+
         const result = await buildPagination(req,
-            (limit, offset) => GenreModels.getGenreAll({ limit, offset }),
-            () => GenreModels.countGenre()
+            (limit, offset) => GenreModels.getGenreAll({ limit, offset, description: req.query.descricao }),
+            () => GenreModels.countGenre(description)
         );
 
         res.status(200).json(result);

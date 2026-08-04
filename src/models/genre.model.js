@@ -2,9 +2,26 @@ import { json } from "express";
 import Pool from "../database/connection.js";
 import pool from "../database/connection.js";
 
-export async function getGenreAll({limit, offset}) {
+export async function getGenreAll({limit, offset, description}) {
+    let sql = " SELECT * FROM genero ";
+    const params = [];
+    
+    if (description) {
+        params.push(`%${description}%`);
 
-    const result = await pool.query(" SELECT * FROM genero ORDER BY id LIMIT $1 OFFSET $2", [limit, offset]);
+        sql += ` WHERE descricao LIKE $${paramns.length}`;
+
+    }
+
+    paramns.push(limit);
+
+    sql += ` ORDER BY id LIMIT $${paramns.length}`;
+
+    paramns.push(offset);
+
+    sql += ` OFFSET $${paramns.length}`;
+
+    const result = await pool.query(sql, paramns);
 
     return result.rows;
 }
@@ -39,13 +56,15 @@ export async function updateGenre(id, dados) {
 }
 
 export async function countGenre() {
+    let sql = ` SELECT * FROM genero `;
 
-    const result = await pool.query(
-        `
-        SELECT COUNT(*) 
-        FROM genero
-        `
-    );
+    if (description) {
+        params.push(`%${description}%`);
+
+        sql += ` WHERE descricao LIKE $${paramns.length}`;
+    }
+
+    const result = await pool.query(sql);
 
     return Number(result.rows[0].count);
 }
