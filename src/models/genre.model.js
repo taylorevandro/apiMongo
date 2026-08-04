@@ -1,6 +1,5 @@
 import { json } from "express";
 import Pool from "../database/connection.js";
-import pool from "../database/connection.js";
 
 export async function getGenreAll({limit, offset, description}) {
     let sql = " SELECT * FROM genero ";
@@ -65,7 +64,7 @@ export async function countGenre(description) {
         sql += ` WHERE descricao LIKE $${params.length}`;
     }
 
-    const result = await pool.query(sql);
+    const result = await pool.query(sql, params);
 
     return Number(result.rows[0].count);
 }

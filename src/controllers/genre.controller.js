@@ -29,7 +29,7 @@ export async function searchGenre(req, res) {
         res.status(200).json(Genre);
     } catch (error) {
         res.status(400).json({
-            message: "Erro ao consultar os gêneros",
+            message: "Erro ao consultar o gênero",
             error: error.message
         });
 
