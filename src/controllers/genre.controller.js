@@ -8,7 +8,7 @@ export async function genreAll(req, res) {
         res.status(200).json({
             page,
             limit,
-            data: genres
+            data: Genre
         });
     } catch (error) {
         res.status(400).json({
