@@ -2,19 +2,13 @@ import * as GenreModels from '../models/genre.model.js';
 
 export async function genreAll(req, res) {
     try {
-        const { limit, offset, page } = req.pagination
-        const [Genre, Total] = await Promise.all([
-            GenreModels.getGenreAll({ limit, offset }),
-            GenreModels.countGenre()
-        ]);
+        const result = await paginate(req,
+            (limit, offset) => GenreModels.getGenreAll({ limit, offset }),
+            () => GenreModels.countGenre()
+        );
 
-        res.status(200).json({
-            page,
-            limit,
-            Total,
-            totalPages: Math.ceil(Total / limit),
-            data: Genre
-        });
+        res.status(200).json(result);
+
     } catch (error) {
         res.status(400).json({
             message: "Erro ao consultar os gêneros",
