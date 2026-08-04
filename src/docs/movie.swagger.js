@@ -74,7 +74,7 @@
  *   post:
  *     summary: Cria um novo Filme
  *     tags:
- *       - Filme
+ *       - Filmes
  *     security:
  *       - bearerAuth: []
  *
@@ -112,7 +112,7 @@
  *   put:
  *     summary: Atualiza um filme
  *     tags:
- *       - Filme
+ *       - Filmes
  *     security:
  *       - bearerAuth: []
  *
@@ -158,7 +158,7 @@
  *   delete:
  *     summary: deletar um filme
  *     tags:
- *       - Filme
+ *       - Filmes
  *     security:
  *       - bearerAuth: []
  *
