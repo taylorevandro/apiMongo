@@ -6,7 +6,7 @@ export async function getGenreAll({limit, offset, description}) {
     const params = [];
     
     if (description) {
-        params.push(`%${description}%`);
+        params.push(`%${description.toUpperCase()}%`);
 
         sql += ` WHERE UPPER(descricao) LIKE $${params.length}`;
 
@@ -59,7 +59,7 @@ export async function countGenre(description) {
     const params = [];
 
     if (description) {
-        params.push(`%${description}%`);
+        params.push(`%${description.toUpperCase()}%`);
 
         sql += ` WHERE UPPER(descricao) LIKE $${params.length}`;
     }
