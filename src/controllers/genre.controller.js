@@ -2,11 +2,15 @@ import * as GenreModels from '../models/genre.model.js';
 
 export async function genreAll(req, res) {
     try {
-        const {limit,offset,page} = req.pagination
-        const Genre = await GenreModels.getGenreAll();
+        const { limit, offset, page } = req.pagination
+        const Genre = await GenreModels.getGenreAll(limit,offset);
 
-        res.status(200).json(Genre);
-    } catch (e) {
+        res.status(200).json({
+            page,
+            limit,
+            data: genres
+        });
+    } catch (error) {
         res.status(400).json({
             message: "Erro ao consultar os gêneros",
             error: error.message
@@ -21,7 +25,7 @@ export async function searchGenre(req, res) {
         const Genre = await GenreModels.getGenreID(id);
 
         res.status(200).json(Genre);
-    } catch (e) {
+    } catch (error) {
         res.status(400).json({
             message: "Erro ao consultar os gêneros",
             error: error.message
@@ -42,7 +46,7 @@ export async function addGenre(req, res) {
         const Genre = await GenreModels.postGenre(req.body);
 
         res.status(201).json(Genre);
-    } catch (e) {
+    } catch (error) {
         res.status(400).json({
             message: "Erro ao consultar os gêneros",
             error: error.message
@@ -54,7 +58,7 @@ export async function addGenre(req, res) {
 export async function modifyGenre(req, res) {
     try {
         const id = req.params.id;
-        const {descricao} = req.body;
+        const { descricao } = req.body;
         if (!descricao) {
             return res.status(400).json({
                 message: "O campo descricao é obrigatório."
@@ -63,7 +67,7 @@ export async function modifyGenre(req, res) {
         const Genre = await GenreModels.updateGenre(id, req.body);
 
         res.status(200).json(Genre);
-    } catch (e) {
+    } catch (error) {
         res.status(400).json({
             message: "Erro ao consultar os gêneros",
             error: error.message

@@ -2,9 +2,9 @@ import { json } from "express";
 import Pool from "../database/connection.js";
 import pool from "../database/connection.js";
 
-export async function getGenreAll() {
+export async function getGenreAll({limite, offset}) {
 
-    const result = await pool.query(" SELECT * FROM genero ORDER BY id");
+    const result = await pool.query(" SELECT * FROM genero ORDER BY id LIMIT $1 OFFSET $2", [limite, offset]);
 
     return result.rows;
 }
