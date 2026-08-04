@@ -9,7 +9,7 @@
  * @swagger
  * /filmes:
  *   get:
- *     summary: Lista todos os gêneros
+ *     summary: Lista todos os filmes
  *     tags:
  *       - Filmes
  *     security:
@@ -34,7 +34,7 @@
  *         schema:
  *           type: string
  *           example: Terror
- *         description: Filtra Filme pela descrição
+ *         description: Filtra filme pela descrição
  *
  *     responses:
  *       200:
@@ -46,7 +46,7 @@
  * @swagger
  * /filmes/{id}:
  *   get:
- *     summary: Busca um Filme pelo ID
+ *     summary: Busca um filme pelo ID
  *     tags:
  *       - Filmes
  *     security:
@@ -72,7 +72,7 @@
  * @swagger
  * /filmes:
  *   post:
- *     summary: Cria um novo Filme
+ *     summary: Cria um novo filme
  *     tags:
  *       - Filmes
  *     security:
@@ -148,7 +148,7 @@
  *
  *     responses:
  *       200:
- *         description: Gênero atualizado
+ *         description: filme atualizado
  */
 
 
