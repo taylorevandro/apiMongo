@@ -11,6 +11,11 @@ const routes = (app) => {
     app.use(express.json(), movies);
     app.use(express.json(), genres);
     app.use(express.json(), users);
+    app.use(
+        "/api-docs",
+        swaggerUi.serve,
+        swaggerUi.setup(swaggerSpec)
+    );
 };
 
 export default routes;
