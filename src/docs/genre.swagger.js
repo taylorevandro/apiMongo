@@ -1,5 +1,12 @@
 /**
  * @swagger
+ * tags:
+ *   name: Gêneros
+ *   description: Endpoints de gerenciamento de gêneros
+ */
+
+/**
+ * @swagger
  * /generos:
  *   get:
  *     summary: Lista todos os gêneros
