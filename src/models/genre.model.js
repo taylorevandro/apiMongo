@@ -9,19 +9,19 @@ export async function getGenreAll({limit, offset, description}) {
     if (description) {
         params.push(`%${description}%`);
 
-        sql += ` WHERE descricao LIKE $${paramns.length}`;
+        sql += ` WHERE descricao LIKE $${params.length}`;
 
     }
 
-    paramns.push(limit);
+    paramnparamss.push(limit);
 
-    sql += ` ORDER BY id LIMIT $${paramns.length}`;
+    sql += ` ORDER BY id LIMIT $${params.length}`;
 
-    paramns.push(offset);
+    params.push(offset);
 
-    sql += ` OFFSET $${paramns.length}`;
+    sql += ` OFFSET $${params.length}`;
 
-    const result = await pool.query(sql, paramns);
+    const result = await pool.query(sql, params);
 
     return result.rows;
 }
@@ -57,11 +57,12 @@ export async function updateGenre(id, dados) {
 
 export async function countGenre() {
     let sql = ` SELECT * FROM genero `;
+    const params = [];
 
     if (description) {
         params.push(`%${description}%`);
 
-        sql += ` WHERE descricao LIKE $${paramns.length}`;
+        sql += ` WHERE descricao LIKE $${params.length}`;
     }
 
     const result = await pool.query(sql);
