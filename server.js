@@ -3,9 +3,9 @@ import app from "./src/app.js";
 
 const PORT = process.env.PORT;
 
-console.log("HOST:", process.env.PGHOST);
-console.log("USER:", process.env.PGUSER);
-console.log("DATABASE:", process.env.PGDATABASE);
+// console.log("HOST:", process.env.PGHOST);
+// console.log("USER:", process.env.PGUSER);
+// console.log("DATABASE:", process.env.PGDATABASE);
 
 dotenv.config();
 
