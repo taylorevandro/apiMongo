@@ -1,5 +1,5 @@
 import { json } from "express";
-import Pool from "../database/connection.js";
+import pool from "../database/connection.js";
 
 export async function getGenreAll({limit, offset, description}) {
     let sql = " SELECT * FROM genero ";
