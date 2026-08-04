@@ -35,7 +35,7 @@ const options = {
     },
 
     apis: [
-        "../docs/*.js"
+        "./src/docs/**/*.js"
     ]
 
 };
