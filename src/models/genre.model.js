@@ -13,7 +13,7 @@ export async function getGenreAll({limit, offset, description}) {
 
     }
 
-    paramnparamss.push(limit);
+    params.push(limit);
 
     sql += ` ORDER BY id LIMIT $${params.length}`;
 
