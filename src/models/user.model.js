@@ -28,7 +28,7 @@ export async function postUser(dados) {
 export async function getLogin(dados) {
 
     let result;
-    let senhaHash = await bcrypt.hash(string(dados.senha), 10);
+    const senhaHash = await bcrypt.hash(string(dados.senha), 10);
 
     if (dados.usuario.includes("@")) {
         result = await pool.query(
