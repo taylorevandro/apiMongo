@@ -117,7 +117,7 @@ export async function searchAccount(req, res) {
             expire: new Date(Date.now() + 10 * 60 * 1000)
         });
 
-        if (!code) {
+        if (!codeCreate) {
             return res.status(404).json({
                 message: "Erro ao criar código de validação"
             });
