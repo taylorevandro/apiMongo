@@ -82,7 +82,7 @@ export async function login(req, res) {
 export async function searchAccount(req, res) {
     try {
         const user = req.params.user;
-        const login = await UserModels.getUsuario(req.user);
+        const login = await UserModels.getUsuario(user);
 
         res.status(200).json(login);
 
