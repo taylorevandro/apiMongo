@@ -125,7 +125,7 @@ export async function searchAccount(req, res) {
         }
 
         await sendEmail(
-            login.mail,
+            login.email,
             "Código de recuperação",
             `Seu código é ${codeCreate.code}`
         );
