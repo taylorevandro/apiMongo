@@ -39,6 +39,10 @@
  *     responses:
  *       200:
  *         description: Lista paginada de gêneros
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/GenrePaginationResponse'
  *
  */
 
@@ -63,6 +67,10 @@
  *     responses:
  *       200:
  *         description: Gênero encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Genre'
  *
  *       404:
  *         description: Gênero não encontrado
@@ -79,19 +87,18 @@
  *       - bearerAuth: []
  *
  *     requestBody:
- *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               descricao:
- *                 type: string
- *                 example: Aventura
+ *             $ref: '#/components/schemas/GenreCreate'
  *
  *     responses:
  *       201:
  *         description: Gênero criado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Genre'
  */
 
 /**
@@ -112,16 +119,16 @@
  *           type: integer
  *
  *     requestBody:
- *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               descricao:
- *                 type: string
+ *             $ref: '#/components/schemas/GenreCreate'
  *
  *     responses:
  *       200:
  *         description: Gênero atualizado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Genre'
  */
