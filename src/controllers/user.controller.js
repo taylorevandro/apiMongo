@@ -96,7 +96,7 @@ export async function searchAccount(req, res) {
 
 export async function setPassowrd(req, res) {
     try {
-        const { id, newPassoword } = req.body;
+        const { id, novaSenha } = req.body;
 
         if (!id) {
             return res.status(400).json({
@@ -104,13 +104,13 @@ export async function setPassowrd(req, res) {
             });
         }
 
-        if (!newPassoword) {
+        if (!novaSenha) {
             return res.status(400).json({
-                message: "O campo newPassoword é obrigatório"
+                message: "O campo novaSenha é obrigatório"
             });
         }
 
-        const login = await UserModels.resetPassowrd(id, newPassoword);
+        const login = await UserModels.resetPassowrd(id, novaSenha);
 
         res.status(200).json({
             message: "Senha alterada com sucesso"

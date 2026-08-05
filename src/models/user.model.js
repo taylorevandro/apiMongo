@@ -25,8 +25,6 @@ export async function postUser(dados) {
 }
 
 export async function getLogin(dados) {
-    // console.log(dados);
-    // console.log(dados.usuario.includes("@"));
 
     let result;
     if (dados.usuario.includes("@")) {
@@ -61,10 +59,10 @@ export async function getUsuario(user) {
 
 }
 
-export async function resetPassowrd(id, newPassword) {
+export async function resetPassowrd(id, novaSenha) {
     const result = await pool.query(
         "UPDATE usuarios SET passoword = $2 WHERE id = $1 RETURNING *",
-        [id, password]
+        [id, novaSenha]
     );
 
     return result.row[0];
