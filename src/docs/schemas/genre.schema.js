@@ -21,7 +21,7 @@
  *       properties:
  *         descricao:
  *           type: string
- *           example: "A casa assombrada"
+ *           example: "Suspense"
  *
  *     GenrePaginationResponse:
  *       allOf:
