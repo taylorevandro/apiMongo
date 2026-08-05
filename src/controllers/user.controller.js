@@ -111,8 +111,11 @@ export async function searchAccount(req, res) {
             100000 + Math.random() * 900000
         ).toString();
 
+        const id = login.id;
+        const email = login.email;
+
         const codeCreate = await UserModels.createCode({
-            id_user: login.id,
+            id_user: id,
             code,
             expire: new Date(Date.now() + 10 * 60 * 1000)
         });
@@ -124,7 +127,7 @@ export async function searchAccount(req, res) {
         }
 
         await sendEmail(
-            login.email,
+            email,
             "Código de recuperação",
             `Seu código é ${codeCreate.code}`
         );
