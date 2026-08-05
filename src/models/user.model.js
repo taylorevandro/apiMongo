@@ -30,7 +30,7 @@ export async function getLogin(usuario, senha) {
     let result;
     // const senhaHash = await bcrypt.hash(string(dados.senha), 10);
 
-    if (dados.usuario.includes("@")) {
+    if (usuario.includes("@")) {
         result = await pool.query(
             " SELECT id,email, usuario, nome, telefone FROM usuarios WHERE email = $1 and senha = $2 ",
             [usuario, senha]
