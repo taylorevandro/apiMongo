@@ -1,6 +1,7 @@
 import { Result } from "pg";
 import * as UserModels from "../models/user.model.js";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
 export async function addUser(req, res) {
     try {
