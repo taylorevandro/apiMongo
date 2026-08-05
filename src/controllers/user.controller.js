@@ -112,7 +112,7 @@ export async function searchAccount(req, res) {
         ).toString();
 
         const id = login.id;
-        const email = login.email;
+        const mail = login.email;
 
         const codeCreate = await UserModels.createCode({
             id_user: id,
@@ -127,7 +127,7 @@ export async function searchAccount(req, res) {
         }
 
         await sendEmail(
-            email,
+            mail,
             "Código de recuperação",
             `Seu código é ${codeCreate.code}`
         );
