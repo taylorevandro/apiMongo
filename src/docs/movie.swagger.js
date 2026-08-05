@@ -39,6 +39,10 @@
  *     responses:
  *       200:
  *         description: Lista paginada de Filmes
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/moviePaginateresponse'
  *
  */
 
@@ -63,6 +67,10 @@
  *     responses:
  *       200:
  *         description: Filme encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/movieresponse'
  *
  *       404:
  *         description: Filme não encontrado
@@ -79,31 +87,18 @@
  *       - bearerAuth: []
  *
  *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               descricao:
- *                 type: string
- *                 example: Aventura
- *               ano_lancamento:
- *                 type: integer
- *                 example: 1
- *               id_genero:
- *                 type: integer
- *                 example: 1
- *               duracao:
- *                 type: integer
- *                 example: 1
- *               autor:
- *                 type: string
- *                 example: Sergio
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/MovieCreate'
  *
  *     responses:
  *       201:
  *         description: Filme criado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/movieresponse'
  */
 
 /**
@@ -124,31 +119,18 @@
  *           type: integer
  *
  *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               descricao:
- *                 type: string
- *                 example: Aventura
- *               ano_lancamento:
- *                 type: integer
- *                 example: 1
- *               id_genero:
- *                 type: integer
- *                 example: 1
- *               duracao:
- *                 type: integer
- *                 example: 1
- *               autor:
- *                 type: string
- *                 example: Sergio
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/MovieCreate'
  *
  *     responses:
  *       200:
  *         description: filme atualizado
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/movieresponse'
  */
 
 
