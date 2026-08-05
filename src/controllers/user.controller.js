@@ -100,6 +100,7 @@ export async function searchAccount(req, res) {
     try {
         const { email, telefone } = req.body;
         const login = await UserModels.findByEmailOrPhone(email, telefone);
+        console.log(login);
 
         if (!login) {
             return res.status(404).json({
@@ -113,6 +114,8 @@ export async function searchAccount(req, res) {
 
         const id = login.id;
         const mail = login.email;
+        console.log(id);
+        console.log(mail);
 
         const codeCreate = await UserModels.createCode({
             id_user: id,
