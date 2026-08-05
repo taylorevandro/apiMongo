@@ -52,12 +52,21 @@ export async function addUser(req, res) {
 
 export async function login(req, res) {
     try {
-        const {usuario, senha} = req.body;
+        const { usuario, senha } = req.body;
 
-        const senhaHash = await bcrypt.hash(senha, 10);
+        const login = await UserModels.getLogin(usuario);
 
-        const login = await UserModels.getLogin(usuario, senhaHash);
-        
+        const senhaValida = await bcrypt.compare(
+            senha,
+            login.senha
+        );
+
+        if (!senhaValida) {
+            return res.status(401).json({
+                message: "Usuário ou senha inválidos"
+            });
+        }
+
         if (!login) {
             return res.status(401).json({
                 message: "Usuário ou senha inválidos"
@@ -74,7 +83,7 @@ export async function login(req, res) {
             expiresIn: process.env.JWT_EXPIRES
         });
 
-        res.status(200).json({acessToken: token});
+        res.status(200).json({ acessToken: token });
 
     } catch (error) {
         res.status(500).json({
