@@ -28,6 +28,10 @@ const options = {
                     type: "http",
                     scheme: "bearer",
                     bearerFormat: "JWT"
+                },
+                 basicAuth: {
+                    type: "http",
+                    scheme: "basic"
                 }
             }
         }

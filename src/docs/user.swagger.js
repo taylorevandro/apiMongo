@@ -1,7 +1,7 @@
 /**
  * @swagger
  * tags:
- *   name: Usuarios
+ *   name: Usuários
  *   description: Endpoints de gerenciamento de Usuarios
  */
 
@@ -27,7 +27,7 @@
  *                 example: 1
  *               novaSenha:
  *                 type: string
- *                 example: ******
+ *                 example: novasenha123
  *
  *     responses:
  *       200:
@@ -65,7 +65,7 @@
  *                 example: joaobatista@email.com
  *               senha:
  *                 type: string
- *                 example: *******
+ *                 example: senha123
  *               telefone:
  *                 type: string
  *                 example: 91999982378
@@ -83,30 +83,25 @@
  *     tags:
  *       - Usuários
  *     security:
- *       - bearerAuth: []
+ *       - basicAuth: []
  *     requestBody:
  *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               usuario:
- *                 type: string
- *                 example: joaobatista ou joao@gmail.com
- *               senha:
- *                 type: string
- *                 example: *******
+ *       $ref: '#/components/schemas/Login'
  *
  *     responses:
  *       200:
  *         description: Login realizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/LoginResponse'
+ *
  */
 
 
 /**
  * @swagger
- * /usuario/:user:
+ * /usuario/{user}:
  *   get:
  *     summary: Busca usuário através do campo usuário ou email
  *     tags:
@@ -118,6 +113,7 @@
  *       - in: path
  *         name: user
  *         required: true
+ *         description: Nome de usuário ou e-mail
  *         schema:
  *           type: string
  *
