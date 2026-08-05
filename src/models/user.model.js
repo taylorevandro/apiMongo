@@ -46,12 +46,13 @@ export async function getLogin(usuario) {
 
 export async function findByEmailOrPhone(email, telefone) {
     // const field = user.includes("@") ? "email" : "telefone";
+    const info = email || telefone;
 
     const result = await pool.query(
         `SELECT id, nome, email, usuario, telefone
-         FROM usuarios WHERE email = $1 OR telefone = $2 `,
+         FROM usuarios WHERE email = $1 OR telefone = $1 `,
         //  WHERE ${field} = $1`,
-        [email, telefone]
+        [info]
     );
 
     return result.rows;
