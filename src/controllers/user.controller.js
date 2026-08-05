@@ -54,7 +54,7 @@ export async function login(req, res) {
     try {
         const {usuario, senha} = req.body;
 
-        const senhaHash = await bcrypt.hash(string(senha), 10);
+        const senhaHash = await bcrypt.hash(senha, 10);
 
         const login = await UserModels.getLogin(usuario, senhaHash);
         
