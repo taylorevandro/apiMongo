@@ -3,11 +3,10 @@
  * components:
  *   schemas:
  *
- *    moviePaginateresponse:
- *       type: object
- *       properties:
- *         allOf:
- *         - $ref: '#/components/schemas/paginate'
+ *     MoviePaginationResponse:
+ *       allOf:
+ *         - $ref: '#/components/schemas/Pagination'
+ *
  *         - type: object
  *           properties:
  *             data:
@@ -15,29 +14,35 @@
  *               items:
  *                 $ref: '#/components/schemas/Movie'
  *
- * 
- *     movieresponse
+ *
+ *     Movie:
  *       type: object
  *       properties:
- *          id:
- *            type: integer
- *            example: 1
- *          descricao:
- *            type: string
- *            example: A casa assombrada
- *          ano_lancamento:
- *            type: integer
- *            example: 1
- *          id_genero:
- *            type: integer
- *            example: 1
- *          duracao:
- *             type: integer
- *             example: 1
- *          autor:
- *             type: string
- *             example: Sergio
- * 
+ *         id:
+ *           type: integer
+ *           example: 1
+ *
+ *         descricao:
+ *           type: string
+ *           example: "A casa assombrada"
+ *
+ *         ano_lancamento:
+ *           type: integer
+ *           example: 2025
+ *
+ *         id_genero:
+ *           type: integer
+ *           example: 1
+ *
+ *         duracao:
+ *           type: integer
+ *           example: 120
+ *
+ *         autor:
+ *           type: string
+ *           example: "Sergio"
+ *
+ *
  *     MovieCreate:
  *       type: object
  *       required:
@@ -46,20 +51,25 @@
  *         - id_genero
  *         - duracao
  *         - autor
+ *
  *       properties:
- *          descricao:
- *             type: string
- *             example: Aventura
- *          ano_lancamento:
- *            type: integer
- *            example: 1
- *          id_genero:
- *             type: integer
- *             example: 1
- *          duracao:
- *             type: integer
- *             example: 1
- *          autor:
- *             type: string
- *             example: Sergio
+ *         descricao:
+ *           type: string
+ *           example: "A casa assombrada"
+ *
+ *         ano_lancamento:
+ *           type: integer
+ *           example: 2025
+ *
+ *         id_genero:
+ *           type: integer
+ *           example: 1
+ *
+ *         duracao:
+ *           type: integer
+ *           example: 120
+ *
+ *         autor:
+ *           type: string
+ *           example: "Sergio"
  */

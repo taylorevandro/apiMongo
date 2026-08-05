@@ -42,7 +42,7 @@
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/moviePaginateresponse'
+ *               $ref: '#/components/schemas/MoviePaginateResponse'
  *
  */
 
@@ -70,7 +70,7 @@
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/movieresponse'
+ *               $ref: '#/components/schemas/MovieResponse'
  *
  *       404:
  *         description: Filme não encontrado
@@ -98,7 +98,7 @@
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/movieresponse'
+ *               $ref: '#/components/schemas/MovieResponse'
  */
 
 /**
@@ -130,7 +130,7 @@
  *        content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/movieresponse'
+ *              $ref: '#/components/schemas/MovieResponse'
  */
 
 
