@@ -16,18 +16,10 @@
  *       - bearerAuth: []
  *
  *     requestBody:
- *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               id:
- *                 type: integer
- *                 example: 1
- *               novaSenha:
- *                 type: string
- *                 example: novasenha123
+ *             $ref: '#/components/schemas/ResetPassword'
  *
  *     responses:
  *       200:
@@ -85,8 +77,10 @@
  *     security:
  *       - basicAuth: []
  *     requestBody:
- *       required: true
- *       $ref: '#/components/schemas/Login'
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Login'
  *
  *     responses:
  *       200:
@@ -120,5 +114,9 @@
  *     responses:
  *       200:
  *         description: Usuário encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
  */
 

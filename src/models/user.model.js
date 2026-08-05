@@ -43,20 +43,16 @@ export async function getLogin(dados) {
 }
 
 export async function getUsuario(user) {
-    if (user.includes("@")) {
-        const result = await pool.query(
-            " SELECT id, nome, email FROM usuarios WHERE email = $1",
-            [email]
-        );
-    } else {
-        const result = await pool.query(
-            " SELECT * FROM usuarios WHERE user = $1",
-            [email]
-        );
-    }
+    const field = user.includes("@") ? "email" : "usuario";
+
+    const result = await pool.query(
+        `SELECT id, nome, email, usuario, telefone
+         FROM usuarios
+         WHERE ${field} = $1`,
+        [user]
+    );
 
     return result.rows;
-
 }
 
 export async function resetPassowrd(id, novaSenha) {
