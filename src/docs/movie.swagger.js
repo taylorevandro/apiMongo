@@ -42,7 +42,7 @@
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/MoviePaginateResponse'
+ *               $ref: '#/components/schemas/MoviePaginationResponse'
  *
  */
 
@@ -127,10 +127,10 @@
  *     responses:
  *       200:
  *         description: filme atualizado
- *        content:
- *          application/json:
- *            schema:
- *              $ref: '#/components/schemas/Movie'
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Movie'
  */
 
 

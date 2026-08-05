@@ -2,7 +2,7 @@
  * @swagger
  * components:
  *   schemas:
- *     paginate:
+ *     Paginate:
  *       type: object
  *       properties:
  *         page:

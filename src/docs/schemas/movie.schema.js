@@ -2,19 +2,6 @@
  * @swagger
  * components:
  *   schemas:
- *
- *     MoviePaginationResponse:
- *       allOf:
- *         - $ref: '#/components/schemas/Pagination'
- *
- *         - type: object
- *           properties:
- *             data:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Movie'
- *
- *
  *     Movie:
  *       type: object
  *       properties:
@@ -72,4 +59,14 @@
  *         autor:
  *           type: string
  *           example: "Sergio"
+ *     MoviePaginationResponse:
+ *       allOf:
+ *         - $ref: '#/components/schemas/Pagination'
+ *
+ *         - type: object
+ *           properties:
+ *             data:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Movie'
  */
