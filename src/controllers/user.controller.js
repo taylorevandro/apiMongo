@@ -124,11 +124,17 @@ export async function searchAccount(req, res) {
             });
         }
 
-        await sendEmail(
+        const emailResult =  await sendEmail(
             login.email,
             "Código de recuperação",
             `Seu código é ${codeCreate.code}`
         );
+
+        if (!emailResult.data?.id) {
+            return res.status(500).json({
+                message: "Falha ao enviar email"
+            });
+        }
 
         res.status(200).json({
             message: "Codigo enviado com sucesso"
