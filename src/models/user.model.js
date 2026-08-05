@@ -55,7 +55,7 @@ export async function findByEmailOrPhone(email, telefone) {
         [info]
     );
 
-    return result.rows;
+    return result.rows[0];
 }
 
 export async function resetPassword(id, novaSenha) {

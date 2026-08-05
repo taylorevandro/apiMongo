@@ -122,6 +122,7 @@ export async function searchAccount(req, res) {
             code,
             expire: new Date(Date.now() + 10 * 60 * 1000)
         });
+        console.log(codeCreate);
 
         if (!codeCreate) {
             return res.status(404).json({
