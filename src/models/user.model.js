@@ -1,5 +1,6 @@
 import { json } from "express";
 import pool from "../database/connection.js";
+import bcrypt from "bcrypt";
 
 export async function existsUser(dados) {
     const result = await pool.query(
@@ -27,15 +28,17 @@ export async function postUser(dados) {
 export async function getLogin(dados) {
 
     let result;
+    let senhaHash = await bcrypt.hash(string(dados.senha), 10);
+
     if (dados.usuario.includes("@")) {
         result = await pool.query(
             " SELECT id,email, usuario, nome, telefone FROM usuarios WHERE email = $1 and senha = $2 ",
-            [dados.usuario, dados.senha]
+            [dados.usuario, senhaHash]
         );
     } else {
         result = await pool.query(
             " SELECT id,email, usuario, nome, telefone FROM usuarios WHERE usuario = $1 and senha = $2 ",
-            [dados.usuario, dados.senha]
+            [dados.usuario, senhaHash]
         );
     }
     console.log(result.rows);

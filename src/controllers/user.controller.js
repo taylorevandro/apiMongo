@@ -111,7 +111,7 @@ export async function setPassowrd(req, res) {
             });
         }
 
-        const senhaHash = await bcrypt.hash(novaSenha, 10);
+        const senhaHash = await bcrypt.hash(string(novaSenha), 10);
 
         const login = await UserModels.resetPassword(id, senhaHash);
 
