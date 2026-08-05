@@ -98,7 +98,7 @@ export async function login(req, res) {
 
 export async function searchAccount(req, res) {
     try {
-        const { email, telefone } = req.params.body;
+        const { email, telefone } = req.body;
         const login = await UserModels.findByEmailOrPhone(email, telefone);
 
         if (!login) {
