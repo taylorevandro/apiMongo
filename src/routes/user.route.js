@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post("/usuario/login", basicAuth, login);
 router.post("/usuario/cadastro", auth, addUser);
-router.get("/usuario/:user", auth, searchAccount);
+router.post("/usuario/reset", auth, searchAccount);
 router.put("/usuario/resetlogin", auth, setPassowrd);
 
 export default router

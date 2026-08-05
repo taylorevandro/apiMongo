@@ -1,5 +1,6 @@
 import { json } from "express";
 import pool from "../database/connection.js";
+import nodemailer from "nodemailer";
 
 export async function existsUser(dados) {
     const result = await pool.query(
@@ -12,12 +13,12 @@ export async function existsUser(dados) {
     return result.rowCount;
 }
 
-export async function postUser(dados) {
+export async function postUser(senhaHash, dados) {
 
     const result = await pool.query(
         " INSERT INTO usuarios(nome, usuario, email, senha, telefone) " +
         " VALUES ($1, $2, $3, $4, $5) RETURNING *",
-        [dados.nome, dados.usuario, dados.email, dados.senha, dados.telefone]
+        [dados.nome, dados.usuario, dados.email, senhaHash, dados.telefone]
     );
 
     return result.rows[0];
@@ -43,14 +44,14 @@ export async function getLogin(usuario) {
     return result.rows[0];
 }
 
-export async function getUsuario(user) {
-    const field = user.includes("@") ? "email" : "usuario";
+export async function findByEmailOrPhone(email, telefone) {
+    // const field = user.includes("@") ? "email" : "telefone";
 
     const result = await pool.query(
         `SELECT id, nome, email, usuario, telefone
-         FROM usuarios
-         WHERE ${field} = $1`,
-        [user]
+         FROM usuarios WHERE email = $1 OR telefone = $2 `,
+        //  WHERE ${field} = $1`,
+        [email, telefone]
     );
 
     return result.rows;
@@ -64,3 +65,14 @@ export async function resetPassword(id, novaSenha) {
 
     return result.rows[0];
 }
+
+export async function createCode({ id_user, code, expire }) {
+    const result = await pool.query(
+        "INSERT INTO recuperacao_senha(id_usuario, codigo, expiracao) VALUES ($1, $2, $3)  RETURNING *",
+        [id_user, code, expire]
+    );
+
+    return result.rows[0];
+
+}
+

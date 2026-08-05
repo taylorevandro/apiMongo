@@ -2,6 +2,7 @@ import { Result } from "pg";
 import * as UserModels from "../models/user.model.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import { sendEmail } from "../services/email.service.js";
 
 export async function addUser(req, res) {
     try {
@@ -30,6 +31,8 @@ export async function addUser(req, res) {
             });
         }
 
+        const senhaHash = await bcrypt.hash(novaSenha, 10);
+
         const existEmailOrUser = await UserModels.existsUser(req.body);
         console.log(existEmailOrUser);
         if (existEmailOrUser > 0) {
@@ -38,7 +41,7 @@ export async function addUser(req, res) {
             });
         }
 
-        const userCadastrado = await UserModels.postUser(req.body);
+        const userCadastrado = await UserModels.postUser(senhaHash, req.body);
 
         res.status(200).json(userCadastrado);
 
@@ -95,14 +98,44 @@ export async function login(req, res) {
 
 export async function searchAccount(req, res) {
     try {
-        const user = req.params.user;
-        const login = await UserModels.getUsuario(user);
+        const { email, telefone } = req.params.body;
+        const login = await UserModels.findByEmailOrPhone(email, telefone);
 
-        res.status(200).json(login);
+        if (!login) {
+            return res.status(404).json({
+                message: "Usuário não encontrado"
+            });
+        }
+
+        const codigo = Math.floor(
+            100000 + Math.random() * 900000
+        ).toString();
+
+        const codeCreate = await UserModels.createCode({
+            id_user: login.id,
+            code,
+            expire: new Date(Date.now() + 10 * 60 * 1000)
+        });
+
+        if (!code) {
+            return res.status(404).json({
+                message: "Erro ao criar código de validação"
+            });
+        }
+
+        await sendEmail(
+            login.email,
+            "Código de recuperação",
+            `Seu código é ${codeCreate.code}`
+        );
+
+        res.status(200).json({
+            message: "Codigo enviado com sucesso"
+        });
 
     } catch (error) {
         res.status(500).json({
-            message: "Erro ao encontrar conta usuario",
+            message: "Erro no processo de criação e envio do código",
             error: error.message
         });
     }
@@ -124,7 +157,7 @@ export async function setPassowrd(req, res) {
             });
         }
 
-        const senhaHash = await bcrypt.hash(string(novaSenha), 10);
+        const senhaHash = await bcrypt.hash(novaSenha, 10);
 
         const login = await UserModels.resetPassword(id, senhaHash);
 
@@ -139,3 +172,20 @@ export async function setPassowrd(req, res) {
     }
 
 }
+
+// export async function setPassowrd(req, res) {
+//     try {
+//         const usuario = await UserModels.findByEmailOrPhone(email, telefone);
+
+//         if (!usuario) {
+//             return res.status(404).json({
+//                 message: "Usuário não encontrado"
+//             });
+//         }
+//     } catch (error) {
+//         res.status(500).json({
+//             message: "Erro ao encontrar a conta do usuario informado",
+//             error: error.message
+//         });
+//     }
+// }

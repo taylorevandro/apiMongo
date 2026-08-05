@@ -105,7 +105,7 @@
 
 /**
  * @swagger
- * /usuario/{user}:
+ * /usuario/reset/{user}:
  *   get:
  *     summary: Busca usuário através do campo usuário ou email
  *     tags:
