@@ -61,7 +61,7 @@
  *           example: "Sergio"
  *     MoviePaginationResponse:
  *       allOf:
- *         - $ref: '#/components/schemas/Pagination'
+ *         - $ref: '#/components/schemas/Paginate'
  *
  *         - type: object
  *           properties:
