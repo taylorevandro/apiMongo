@@ -100,7 +100,6 @@ export async function searchAccount(req, res) {
     try {
         const { email, telefone } = req.body;
         const login = await UserModels.findByEmailOrPhone(email, telefone);
-        console.log(login);
 
         if (!login) {
             return res.status(404).json({
@@ -112,13 +111,8 @@ export async function searchAccount(req, res) {
             100000 + Math.random() * 900000
         ).toString();
 
-        const id = login.id;
-        const mail = login.email;
-        console.log(id);
-        console.log(mail);
-
         const codeCreate = await UserModels.createCode({
-            id_user: id,
+            id_user: login.id,
             code,
             expire: new Date(Date.now() + 10 * 60 * 1000)
         });
@@ -131,7 +125,7 @@ export async function searchAccount(req, res) {
         }
 
         await sendEmail(
-            mail,
+            login.mail,
             "Código de recuperação",
             `Seu código é ${codeCreate.code}`
         );

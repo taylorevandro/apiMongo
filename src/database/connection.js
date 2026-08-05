@@ -1,11 +1,31 @@
 import "dotenv/config";
 import { Pool } from "pg";
+import nodemailer from "nodemailer";
 
 const pool = new Pool({
     ssl: {
         rejectUnauthorized: false
     }
 });
+
+
+async function testandoSMTP() {
+    const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASSWORD
+        }
+    });
+    
+    transporter.verify((error, success) => {
+    if (error) {
+        console.log("Erro SMTP:", error);
+    } else {
+        console.log("Servidor SMTP pronto");
+    }
+});
+}
 
 async function testConnection() {
     try {
@@ -16,6 +36,7 @@ async function testConnection() {
         console.error("Erro ao conectar:", error.message);
     }
 }
+testandoSMTP();
 
 testConnection();
 
