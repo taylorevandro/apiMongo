@@ -52,7 +52,11 @@ export async function addUser(req, res) {
 
 export async function login(req, res) {
     try {
-        const login = await UserModels.getLogin(req.body);
+        const {usuario, senha} = req.body;
+
+        const senhaHash = await bcrypt.hash(string(senha), 10);
+
+        const login = await UserModels.getLogin(usuario, senhaHash);
         
         if (!login) {
             return res.status(401).json({
