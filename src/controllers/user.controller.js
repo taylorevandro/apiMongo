@@ -110,7 +110,9 @@ export async function setPassowrd(req, res) {
             });
         }
 
-        const login = await UserModels.resetPassowrd(id, novaSenha);
+        const senhaHash = await bcrypt.hash(novaSenha, 10);
+
+        const login = await UserModels.resetPassword(id, senhaHash);
 
         res.status(200).json({
             message: "Senha alterada com sucesso"

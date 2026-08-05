@@ -25,8 +25,18 @@
  *       200:
  *         description: Senha alterada com sucesso
  *
- *       404:
+ *       400:
  *         description: Usuário não encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error400'
+ *       500:
+ *         description: Usuário não encontrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Error500'
  */
 
 /**

@@ -55,11 +55,11 @@ export async function getUsuario(user) {
     return result.rows;
 }
 
-export async function resetPassowrd(id, novaSenha) {
+export async function resetPassword(id, novaSenha) {
     const result = await pool.query(
         "UPDATE usuarios SET senha = $2 WHERE id = $1 RETURNING *",
         [id, novaSenha]
     );
 
-    return result.row[0];
+    return result.rows[0];
 }
