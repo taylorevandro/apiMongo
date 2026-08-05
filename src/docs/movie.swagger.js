@@ -70,7 +70,7 @@
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/MovieResponse'
+ *               $ref: '#/components/schemas/Movie'
  *
  *       404:
  *         description: Filme não encontrado
@@ -98,7 +98,7 @@
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/MovieResponse'
+ *               $ref: '#/components/schemas/Movie'
  */
 
 /**
@@ -130,7 +130,7 @@
  *        content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/MovieResponse'
+ *              $ref: '#/components/schemas/Movie'
  */
 
 
