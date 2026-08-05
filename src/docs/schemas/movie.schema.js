@@ -3,36 +3,18 @@
  * components:
  *   schemas:
  *
- *     moviePaginateresponse:
+ *    moviePaginateresponse:
  *       type: object
  *       properties:
- *         $ref: '#/components/schemas/paginate'
- *         data:
- *           type: array
- *           items:
- *              type: object
- *              properties:
- *                id:
- *                  type: integer
- *                  example: 1
- *                descricao:
- *                  type: string
- *                  example: A casa assombrada
- *                descricao:
- *                  type: string
- *                  example: Aventura
- *                ano_lancamento:
- *                  type: integer
- *                  example: 1
- *                id_genero:
- *                  type: integer
- *                  example: 1
- *                duracao:
- *                  type: integer
- *                  example: 1
- *                autor:
- *                  type: string
- *                  example: Sergio
+ *         allOf:
+ *         - $ref: '#/components/schemas/paginate'
+ *         - type: object
+ *           properties:
+ *             data:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Movie'
+ *
  * 
  *     movieresponse
  *       type: object
