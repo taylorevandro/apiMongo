@@ -107,7 +107,7 @@ export async function searchAccount(req, res) {
             });
         }
 
-        const codigo = Math.floor(
+        const code = Math.floor(
             100000 + Math.random() * 900000
         ).toString();
 
