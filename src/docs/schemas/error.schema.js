@@ -13,7 +13,7 @@
  *           type: string
  *           example: motivo do erro
  * 
- *     Error400:
+ *     Message:
  *       type: object
  *       properties:
  *         message:

@@ -107,4 +107,32 @@
  *           type: string
  *           description: Token JWT
  *           example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+ * 
+ *     Reset:
+ *       type: object
+ *       required:
+ *         - email
+ *         - telefone
+ *       properties:
+ *         email:
+ *           type: string
+ *           example: email@gmail.com
+ *
+ *         telefone:
+ *           type: string
+ *           example: 91829382928
+ * 
+ *     ValidaCode:
+ *       type: object
+ *       required:
+ *         - id
+ *         - codigo
+ *       properties:
+ *         id:
+ *           type: integer
+ *           example: 1
+ *
+ *         codigo:
+ *           type: string
+ *           example: 12345
  */

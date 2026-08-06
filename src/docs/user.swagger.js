@@ -30,7 +30,7 @@
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Error400'
+ *               $ref: '#/components/schemas/Message'
  *       500:
  *         description: Usuário não encontrado
  *         content:
@@ -105,28 +105,51 @@
 
 /**
  * @swagger
- * /usuario/reset/{user}:
- *   get:
- *     summary: Busca usuário através do campo usuário ou email
+ * /usuario/reset:
+ *   post:
+ *     summary: Busca usuário através do campo usuário ou email e envia código de validação para alterar senha
  *     tags:
  *       - Usuários
  *     security:
  *       - bearerAuth: []
  *
- *     parameters:
- *       - in: path
- *         name: user
- *         required: true
- *         description: Nome de usuário ou e-mail
- *         schema:
- *           type: string
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Reset'
  *
  *     responses:
  *       200:
- *         description: Usuário encontrado
+ *         description: Código enviado
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/User'
+ *               $ref: '#/components/schemas/Message'
+ */
+
+/**
+ * @swagger
+ * /usuario/validaCodigo:
+ *   post:
+ *     summary: Valida o código enviado por email ou telefone
+ *     tags:
+ *       - Usuários
+ *     security:
+ *       - bearerAuth: []
+ *
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ValidaCode'
+ *
+ *     responses:
+ *       200:
+ *         description: Codigo validado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Message'
  */
 

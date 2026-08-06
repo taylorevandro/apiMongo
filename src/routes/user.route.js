@@ -9,7 +9,7 @@ const router = express.Router();
 router.post("/usuario/login", basicAuth, login);
 router.post("/usuario/cadastro", auth, addUser);
 router.post("/usuario/reset", auth, searchAccount);
-router.put("/usuario/resetlogin", auth, setPassowrd);
+router.put("/usuario/resetLogin", auth, setPassowrd);
 router.post("/usuario/validaCodigo", auth, valideCode);
 
 export default router
