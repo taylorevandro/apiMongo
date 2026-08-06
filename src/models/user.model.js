@@ -80,7 +80,7 @@ export async function createCode({ id_user, code, expire }) {
 export async function findyCode(id, codigo) {
     const result = await pool.query(
         " SELECT * FROM recuperacao_senha "+
-        " WHERE id_usuario = $1 AND codigo = $2 AND expiracao < NOW() ORDER BY ID",
+        " WHERE id_usuario = $1 AND codigo = $2 AND expiracao > NOW() ORDER BY ID DESC",
         [id, codigo]);
     
     return result.rows[0];

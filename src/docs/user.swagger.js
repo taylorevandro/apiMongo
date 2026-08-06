@@ -7,7 +7,7 @@
 
 /**
  * @swagger
- * /usuario/resetlogin:
+ * /usuario/resetLogin:
  *   put:
  *     summary: Redefinir a senha do usuário
  *     tags:
