@@ -3,6 +3,8 @@
 API REST desenvolvida em **Node.js**, **Express** e **PostgreSQL**, oferecendo autenticação com **JWT**, controle de acesso às rotas, paginação, rate limiting e operações completas de CRUD para gerenciamento de filmes e gêneros.
 
 ---
+![Node.js](https://img.shields.io/badge/Node.js-22.x-green)
+---
 
 ## 📋 Índice
 
