@@ -4,6 +4,9 @@ API REST desenvolvida em **Node.js**, **Express** e **PostgreSQL**, oferecendo a
 
 ---
 ![Node.js](https://img.shields.io/badge/Node.js-22.x-green)
+![Express](https://img.shields.io/badge/Express-5.x-black)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue)
+![JWT](https://img.shields.io/badge/Auth-JWT-orange)
 ---
 
 ## 📋 Índice
