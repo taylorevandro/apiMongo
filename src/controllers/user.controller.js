@@ -124,7 +124,7 @@ export async function searchAccount(req, res) {
             });
         }
 
-        const emailResult =  await sendEmail(
+        const emailResult = await sendEmail(
             login.email,
             "Código de recuperação",
             `Seu código é ${codeCreate.codigo}`
@@ -148,21 +148,29 @@ export async function searchAccount(req, res) {
     }
 }
 
-export async function valideCode(req, res){
-    try{
+export async function valideCode(req, res) {
+    try {
         const { id, codigo } = req.body;
-        const code = await UserModels.findyCode(id ,codigo);
+        const code = await UserModels.findyCode(id, codigo);
 
         if (!code) {
-             return res.status(400).json({
+            return res.status(400).json({
                 message: "Código inválido"
             });
         }
+
+        const validate = await UserModels.updateCode(code.id_usuario);
+
+
+        res.status(200).json({
+            message: "Código válido"
+        });
+
     } catch (error) {
-       res.status(500).json({
+        res.status(500).json({
             message: "Erro no processo de criação e envio do código",
             error: error.message
-        }); 
+        });
     }
 }
 

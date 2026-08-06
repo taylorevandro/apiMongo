@@ -86,3 +86,11 @@ export async function findyCode(id, codigo) {
     return result.rows[0];
 }
 
+export async function updateCode(id) {
+    const result = await pool.query(
+        " UPDATE recuperacao_senha SET utilizado = TRUE "+
+        " WHERE id_usuario = $1",
+        [id]);
+    
+    return result.rows[0];
+}
