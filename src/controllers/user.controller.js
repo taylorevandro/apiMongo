@@ -148,6 +148,24 @@ export async function searchAccount(req, res) {
     }
 }
 
+export async function valideCode(req, res){
+    try{
+        const { id, codigo } = req.body;
+        const code = await UserModels.findyCode(id ,codigo);
+
+        if (!code) {
+             return res.status(400).json({
+                message: "Código inválido"
+            });
+        }
+    } catch (error) {
+       res.status(500).json({
+            message: "Erro no processo de criação e envio do código",
+            error: error.message
+        }); 
+    }
+}
+
 export async function setPassowrd(req, res) {
     try {
         const { id, novaSenha } = req.body;
