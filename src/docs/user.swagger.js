@@ -107,7 +107,7 @@
  * @swagger
  * /usuario/reset:
  *   post:
- *     summary: Busca usuário através do campo usuário ou email e envia código de validação para alterar senha
+ *     summary: Busca usuário através do campo email ou telefone e envia código de validação para alterar senha
  *     tags:
  *       - Usuários
  *     security:
