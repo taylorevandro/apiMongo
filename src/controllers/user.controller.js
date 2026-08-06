@@ -127,7 +127,7 @@ export async function searchAccount(req, res) {
         const emailResult =  await sendEmail(
             login.email,
             "Código de recuperação",
-            `Seu código é ${codeCreate.code}`
+            `Seu código é ${codeCreate.codigo}`
         );
 
         if (!emailResult.data?.id) {
